@@ -1,0 +1,47 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          usb485
+# Required-Start:    hostname $local_fs
+# Required-Stop:
+# Should-Start:
+# Default-Start:     1 2 3 4 5
+# Default-Stop:
+# Short-Description: Load fdti_sio module and set parameters for usb485
+# Description:       To use Hjelmslund Electronics USB485 Iso stick
+#                    the module ftdi_sio must be loaded
+#                    and the identity 1c40:0477 has to be set
+#                    as the driver does not support this identity.
+### END INIT INFO
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+. /lib/init/vars.sh
+
+do_start () {
+	# load module
+	modprobe ftdi_sio
+	# set usb id of USB485 Iso stick
+	sh -c "echo 1c40 0477 > /sys/bus/usb-serial/drivers/ftdi_sio/new_id"
+}
+
+do_status () {
+	ls /sys/bus/usb-serial/drivers/ftdi_sio/new_id
+	return $?
+}
+
+case "$1" in
+  start|"")
+	do_start
+	;;
+  stop)
+	# No-op
+	;;
+  status)
+	do_status
+	exit $?
+	;;
+  *)
+	echo "Usage: usb485 [start|stop|status]" >&2
+	exit 3
+	;;
+esac
+
