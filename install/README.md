@@ -4,7 +4,7 @@ created and tested this text file describes how to install the software on a Ras
 You need to have a fairly good idea when and how to make scripts executable, when to copy files as root (using sudo), 
 how to activate init.d scripts etc.
 
-Install your favourite web server (   lighttpd ).
+Install your favourite web server (lighttpd ).
 
 The Python scripts in "emonitor" and "pow-mon" are placed in: "/usr/local/bin"
 
