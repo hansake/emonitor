@@ -134,6 +134,10 @@ tr:nth-child(even) {
 <li>
    <a href="http:/powmonprev24h.php">Energy consumption during last 24h</a>
 </li>
+<H4>Electricity monitor</H4>
+<li>
+   <a href="http:/emonitor.php">Current and power monitor</a>
+</li>
 <H4>Documentation</H4>
 <li>
    <a href="http://192.168.1.20/MediaWiki/index.php?title=Energy_monitor_on_Raspberry_Pi#Energy_monitor_and_web_interface">Energy monitor on Raspberry Pi</a>
