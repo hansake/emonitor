@@ -2,7 +2,7 @@ TODO: installation should really be done with a standard installation method and
 
 To install on a Raspberry Pi:
 
-You need to have a fairly goot idea when make scripts executable, when to copy files as root (using sudo) etc.
+You need to have a fairly good idea when make scripts executable, when to copy files as root (using sudo) etc.
 
 Install your favourite web server.
 
