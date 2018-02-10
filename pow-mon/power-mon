@@ -1,0 +1,89 @@
+#!/bin/sh
+#
+### BEGIN INIT INFO
+# Provides:          power-mon
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Initscript for power-mond.py
+# Description:       This file should be used to construct scripts to be
+#                    placed in /etc/init.d.  This example start a
+#                    single forking daemon capable of writing a pid
+#                    file.  To get other behavoirs, implemend
+#                    do_start(), do_stop() or other functions to
+#                    override the defaults in /lib/init/init-d-script.
+### END INIT INFO
+
+# Author: Hans-Ake Lund <hans-ake@trei-lund.st>
+
+RETVAL=0
+prog="power-mon"
+
+start() {
+  if [ -f /var/lock/subsys/$prog ]; then
+    echo -n 'Service: ' >&2
+    echo -n $prog >&2
+    echo ' already running' >&2
+    RETVAL=1
+  else
+    echo -n 'Starting service: ' >&2
+    echo $prog >&2
+    python /usr/local/bin/power-mon.py &
+    RETVAL=$?
+    [ "$RETVAL" = 0 ] && touch /var/lock/subsys/$prog
+    echo -n 'Started service: ' >&2
+    echo $prog >&2
+  fi
+}
+
+stop() {
+  if [ ! -f /var/lock/subsys/$prog ]; then
+    echo -n 'Service: ' >&2
+    echo -n $prog >&2
+    echo ' not running' >&2
+    RETVAL=1
+  else
+    echo -n 'Stopping service: ' >&2
+    echo $prog
+    pkill -9 -f power-mon.py
+    RETVAL=$?
+    [ "$RETVAL" = 0 ] && rm -f /var/lock/subsys/$prog
+    echo -n 'Service: ' >&2 
+    echo -n $prog >&2
+    echo ' stopped' >&2 
+  fi
+}
+
+status() {
+  if [ -f /var/lock/subsys/$prog ]; then
+    echo -n 'Service: ' >&2
+    echo -n $prog >&2
+    echo ' running' >&2
+    RETVAL=0
+  else
+    echo -n 'Service: ' >&2
+    echo -n $prog >&2
+    echo ' not running' >&2
+    RETVAL=1
+  fi
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  status)
+#    pgrep -f power-mon.py
+    status
+    ;;
+  *)
+    echo -n 'Usage: ' >&2
+    echo -n $0 >&2
+    echo ' (start|stop|status)' >&2
+    RETVAL=1
+esac
+exit $RETVAL
