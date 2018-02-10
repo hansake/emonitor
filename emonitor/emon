@@ -77,7 +77,7 @@ case "$1" in
     stop
     ;;
   status)
-#    pgrep -f emonitor.py
+#    pgrep emonitor.py
     status
     ;;
   *)
