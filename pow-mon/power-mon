@@ -77,7 +77,7 @@ case "$1" in
     stop
     ;;
   status)
-#    pgrep -f power-mon.py
+#    pgrep power-mon.py
     status
     ;;
   *)
