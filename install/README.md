@@ -7,6 +7,9 @@ You need to have a fairly goot idea when make scripts executable, when to copy f
 Install your favourite web server.
 
 The Python scripts are placed in: /usr/local/bin
+
 The start scripts are placed in: /etc/init.d
+
 The PHP scripts are placed in: /var/www/html
+
 The SQLite databases will be placed in: /var/db
