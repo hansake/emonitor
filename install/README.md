@@ -5,10 +5,10 @@ how to activate init.d scripts etc.
 
 Install your favourite web server.
 
-The Python scripts are placed in: /usr/local/bin
+The Python scripts in "emonitor" and "pow-mon" are placed in: "/usr/local/bin"
 
-The start scripts are placed in: /etc/init.d
+The start scripts in "emonitor" and "pow-mon" are placed in: "/etc/init.d"
 
-The PHP scripts are placed in: /var/www/html
+The PHP scripts in "php" are placed in: "/var/www/html"
 
-The SQLite databases will be placed in: /var/db
+The SQLite databases will be created in: "/var/db"
