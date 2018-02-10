@@ -1,4 +1,4 @@
-TODO: installation should really be done with a standard installation method and script but until this script is created this file describes how to install the software on a Rasberry Pi.
+TODO: installation should really be done with a standard installation method and script but until this script is created this text file describes how to install the software on a Rasberry Pi.
 
 To install on a Raspberry Pi:
 
