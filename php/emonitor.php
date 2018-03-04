@@ -181,9 +181,11 @@ tr:nth-child(even) {
 
     echo "<table>";
     echo "<tr>";
+    echo sprintf("<th>%s</th>", "Total Power");
     echo sprintf("<th>%s</th>", $registertxt275);
     echo  "</tr>";
     echo  "<tr>";
+    echo sprintf("<td>%01.0f W</td>", $register209 + $register210 + $register211);
     echo sprintf("<td>%01.2f Hz</td>", ($register275 / 100));
     echo "</tr>";
     echo "</table>";
@@ -200,6 +202,9 @@ tr:nth-child(even) {
 </li>
 <li>
    <a href="http:/wattprev24h.php">Watt during last 24 hours</a>
+</li>
+<li>
+   <a href="http:/wattprevsum24h.php">Watt including total during last 24 hours</a>
 </li>
 <li>
    <a href="http:/wattprev30d.php">Watt during last 30 days</a>
