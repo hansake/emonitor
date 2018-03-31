@@ -88,9 +88,8 @@ tr:nth-child(even) {
 
     echo sprintf("<H2>Energy consumption monitor</H2>\n");
     echo ($stampdate->format('Y-m-d H:i'));
-    echo "<br>kWh measured since: ";
+    echo "<br>Total kWh measured since: ";
     echo ($startdate->format('Y-m-d H:i'));
-    echo " (only total since that date)";
 
     $dinterval = date_diff($nowdate, $stampdate);
     $dint = $dinterval->days*86400 + $dinterval->h*3600 + $dinterval->i*60 + $dinterval->s;
@@ -119,6 +118,9 @@ tr:nth-child(even) {
 ?>
 
 <H4>Graphs</H4>
+<li>
+   <a href="http:/powmon2018mar.php">Energy consumption during March 2018</a>
+</li>
 <li>
    <a href="http:/powmon2018feb.php">Energy consumption during February 2018</a>
 </li>
