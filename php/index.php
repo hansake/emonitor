@@ -119,6 +119,9 @@ tr:nth-child(even) {
 
 <H4>Graphs</H4>
 <li>
+   <a href="http:/powmon2018apr.php">Energy consumption during April 2018</a>
+</li>
+<li>
    <a href="http:/powmon2018mar.php">Energy consumption during March 2018</a>
 </li>
 <li>
