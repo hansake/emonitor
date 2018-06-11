@@ -18,10 +18,10 @@ tr:nth-child(even) {
 }
 </style>
  <head>
-  <title>Energy during June</title>
+  <title>Energy during June 2018</title>
  </head>
  <body>
- <H2>Energy consumption during June</H2>
+ <H2>Energy consumption during June 2018</H2>
   <li>
     <a href="index.php">Back to main page</a>
   </li>
@@ -49,7 +49,7 @@ tr:nth-child(even) {
         exit($error);
     }
 
-    $indexdate = date_create('last day of June 2017');
+    $indexdate = date_create('last day of June 2018');
     /*print($indexdate->format('Y-m-d H:i'));*/
 
     $db->busyTimeout(5000);

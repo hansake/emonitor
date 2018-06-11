@@ -23,7 +23,7 @@ tr:nth-child(even) {
  <body>
  <H2>Energy consumption during 2017</H2>
   <li>
-    <a href="http:/">Back to main page</a>
+    <a href="index.php">Back to main page</a>
   </li>
 
 <?php
@@ -285,31 +285,31 @@ tr:nth-child(even) {
 
 <H4>Monthly graphs</H4>
 <li>
-   <a href="http:/powmondecember.php">Energy consumption during December 2017</a>
+   <a href="powmondecember.php">Energy consumption during December 2017</a>
 </li>
 <li>
-   <a href="http:/powmonnovember.php">Energy consumption during November 2017</a>
+   <a href="powmonnovember.php">Energy consumption during November 2017</a>
 </li>
 <li>
-   <a href="http:/powmonoctober.php">Energy consumption during October 2017</a>
+   <a href="powmonoctober.php">Energy consumption during October 2017</a>
 </li>
 <li>
-   <a href="http:/powmonsept.php">Energy consumption during September 2017</a>
+   <a href="powmonsept.php">Energy consumption during September 2017</a>
 </li>
 <li>
-   <a href="http:/powmonaugust.php">Energy consumption during August 2017</a>
+   <a href="powmonaugust.php">Energy consumption during August 2017</a>
 </li>
 <li>
-   <a href="http:/powmonjuly.php">Energy consumption during July 2017</a>
+   <a href="powmonjuly.php">Energy consumption during July 2017</a>
 </li>
 <li>
-   <a href="http:/powmonjune.php">Energy consumption during June 2017</a>
+   <a href="powmonjune.php">Energy consumption during June 2017</a>
 </li>
 <li>
-   <a href="http:/powmonmay.php">Energy consumption during May 2017</a>
+   <a href="powmonmay.php">Energy consumption during May 2017</a>
 </li>
 <li>
-   <a href="http:/powmonapril.php">Energy consumption during April 2017</a>
+   <a href="powmonapril.php">Energy consumption during April 2017</a>
 </li>
 
  </body>

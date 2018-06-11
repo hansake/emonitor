@@ -195,19 +195,23 @@ tr:nth-child(even) {
 
 <H4>Graphs</H4>
 <li>
-   <a href="http:/currprev24h.php">Current during last 24 hours</a>
+   <a href="currprev24h.php">Current during last 24 hours</a>
 </li>
 <li>
-   <a href="http:/currprev30d.php">Current during last 30 days</a>
+   <a href="currprev30d.php">Current during last 30 days</a>
 </li>
 <li>
-   <a href="http:/wattprev24h.php">Watt during last 24 hours</a>
+   <a href="wattprev24h.php">Watt during last 24 hours</a>
 </li>
 <li>
-   <a href="http:/wattprevsum24h.php">Watt including total during last 24 hours</a>
+   <a href="wattprevsum24h.php">Watt including total during last 24 hours</a>
 </li>
 <li>
-   <a href="http:/wattprev30d.php">Watt during last 30 days</a>
+   <a href="wattprev30d.php">Watt during last 30 days</a>
+</li>
+<br>
+<li>
+  <a href="index.php">Back to main page</a>
 </li>
 <H4>Documentation</H4>
 <li>
@@ -215,7 +219,7 @@ tr:nth-child(even) {
 </li>
 <br>
 <li>
-   <a href="http:/phpliteadmin.php">Database administration</a>
+   <a href="phpliteadmin.php">Database administration</a>
 </li>
 
  </body>

@@ -18,30 +18,30 @@ tr:nth-child(even) {
 }
 </style>
  <head>
-  <title>Energy during June</title>
+  <title>Energy last 24h</title>
  </head>
  <body>
- <H2>Energy consumption during June</H2>
+ <H2>Energy consumption during last 24h</H2>
   <li>
     <a href="index.php">Back to main page</a>
   </li>
 
 <?php
 
-    $hcounters = 30;
-    $countertxt1 = "Total kWh"; /* Counter 1 */
-    $countertxt2 = "Heatpump kWh"; /* Counter 2 */
-    $countertxt3 = "Spa kWh"; /* Counter 3 */
-    $countertxt4 = "Other kWh"; /* Counter 1 - (Counter 2 + Counter 3) */
+    $hcounters = 24;
+    $countertxt1 = "Total Wh"; /* Counter 1 */
+    $countertxt2 = "Heatpump Wh"; /* Counter 2 */
+    $countertxt3 = "Spa Wh"; /* Counter 3 */
+    $countertxt4 = "Other Wh"; /* Counter 1 - (Counter 2 + Counter 3) */
 
     $hdifftime = array_fill(0, $hcounters, 0);
     $hdiffcnt1 = array_fill(0, $hcounters, 0);
     $hdiffcnt2 = array_fill(0, $hcounters, 0);
     $hdiffcnt3 = array_fill(0, $hcounters, 0);
-    $totcntr1 = 0.0;
-    $totcntr2 = 0.0;
-    $totcntr3 = 0.0;
-    $totcntr4 = 0.0;
+    $totcntr1 = 0;
+    $totcntr2 = 0;
+    $totcntr3 = 0;
+    $totcntr4 = 0;
 
     $db = new SQLite3('/var/db/powermon.db');
     if (!$db)
@@ -49,8 +49,9 @@ tr:nth-child(even) {
         exit($error);
     }
 
-    $indexdate = date_create('last day of June 2017');
-    /*print($indexdate->format('Y-m-d H:i'));*/
+    $indexdate = date_create('now');
+    $evenh = date_format($indexdate, 'H');
+    date_time_set($indexdate, $evenh, 0, 0);
 
     $db->busyTimeout(5000);
 
@@ -89,24 +90,23 @@ tr:nth-child(even) {
             {
                 $hdifftime[$i] = $lasttimestamp;
                 $hdiffcnt1[$i] = $whdiff1;
-                $totcntr1 += ($whdiff1 / 1000);
+                $totcntr1 += $whdiff1;
                 $hdiffcnt2[$i] = $whdiff2;
-                $totcntr2 += ($whdiff2 / 1000);
+                $totcntr2 += $whdiff2;
                 $hdiffcnt3[$i] = $whdiff3;
-                $totcntr3 += ($whdiff3 / 1000);
-                $totcntr4 = $totcntr1 - ($totcntr2 + $totcntr3);
+                $totcntr3 += $whdiff3;
             }
         }
-        date_sub($indexdate, date_interval_create_from_date_string('24 hours'));
+        date_sub($indexdate, date_interval_create_from_date_string('1 hour'));
         $lasttimestamp = $row[0];
     }
 
     header("refresh: 30;");
 
     $showdate = date_create();
-    date_timestamp_set($showdate, $hdifftime[1]);
-    date_sub($showdate, date_interval_create_from_date_string('24 hours'));
-    echo sprintf("<H4>Energy consumption from %s and throughout the month</H4>\n", $showdate->format('Y-m-d H:i'));
+    date_timestamp_set($showdate, $hdifftime[0]);
+    date_sub($showdate, date_interval_create_from_date_string('1 hour'));
+    echo sprintf("<H4>Energy consumption from %s to now</H4>\n", $showdate->format('Y-m-d H:i'));
     $showhour = $showdate->format('Y-m-d H:i');
     $startdate = $showhour;
     date_timestamp_set($showdate, $hdifftime[$hcounters -1]);
@@ -122,10 +122,10 @@ tr:nth-child(even) {
     echo sprintf("<th>%s</th>", $countertxt4);
     echo  "</tr>";
     echo  "<tr>";
-    echo sprintf("<td>%01.2f</td>", $totcntr1);
-    echo sprintf("<td>%01.2f</td>", $totcntr2);
-    echo sprintf("<td>%01.2f</td>", $totcntr3);
-    echo sprintf("<td>%01.2f</td>", $totcntr4);
+    echo sprintf("<td>%s</td>", $totcntr1);
+    echo sprintf("<td>%s</td>", $totcntr2);
+    echo sprintf("<td>%s</td>", $totcntr3);
+    echo sprintf("<td>%s</td>", $totcntr4);
     echo "</tr>";
     echo "</table>";
     echo "<br>";
@@ -136,8 +136,8 @@ tr:nth-child(even) {
     $maxwatts = max($maxwatts1, $maxwatts2, $maxwatts3);
 
     /*Set parameters for width & height of graph and chart*/
-    $wattspacing = 10000;
-    $graphwidth = $hcounters * 26; /* 30 * 26 */
+    $wattspacing = 500;
+    $graphwidth = $hcounters * 32; /* 24 * 32 */
     $graphheight = 500;
     $topmargin =  30;
     $botmargin = 40;
@@ -178,10 +178,6 @@ tr:nth-child(even) {
     echo '<text x="'.$tx.'" y="18" font-family="sans-serif" font-size="15px">';
     echo $startdate;
     echo '</text>';
-    $tx = $leftgraph + 350;
-    echo '<text x="'.$tx.'" y="18" font-family="sans-serif" font-size="15px">';
-    echo 'kWh per day';
-    echo '</text>';
     $tx = $rightgraph - 145;
     echo '<text x="'.$tx.'" y="18" font-family="sans-serif" font-size="15px">';
     echo $enddate;
@@ -221,7 +217,7 @@ tr:nth-child(even) {
         $ty = $y + 5;
         echo '<text x="'.$tx.'" y="'.$ty.'" font-family="sans-serif" font-size="15px" transform="rotate(0,'.$rightgraph.','.$ty.')">';
         $wattint = (int)$wattline;
-        echo sprintf("%d kWh", $wattint / 1000);
+        echo sprintf("%d Wh", $wattint);
         echo '</text>';
         echo "\n   ";
         $wattline += $wattspacing; 
@@ -238,24 +234,39 @@ tr:nth-child(even) {
         echo "\n   ";
         echo '<line x1="'.$x.'" y1="'.$topgraph.'" x2="'.$x.'" y2="'.$botgraph.'" style="stroke:black;stroke-width:1"/>';
         date_timestamp_set($showdate, $hdifftime[$j]);
-        $showhour = $showdate->format('d');
+        $showhour = $showdate->format('H');
         $tx = $x + $xticker - 10;
         $ty = $botgraph + 18;
         echo '<text x="'.$tx.'" y="'.$ty.'" font-family="sans-serif" font-size="15px">';
         echo $showhour;
         echo '</text>';
 
-        $gx = $x + $xticker;
 
+        $gx = $x;
+        $ywatts1 = $botgraph - $hdiffcnt1[$j]*$scalefactorwatts;
+        $polystringwatts1 = $polystringwatts1." ".$gx.",".$ywatts1;
+        $gx = $x + $xticker;
         $ywatts1 = $botgraph - $hdiffcnt1[$j]*$scalefactorwatts;
         $polystringwatts1 = $polystringwatts1." ".$gx.",".$ywatts1;
 
+        $gx = $x;
+        $ywatts2 = $botgraph - $hdiffcnt2[$j]*$scalefactorwatts;
+        $polystringwatts2 = $polystringwatts2." ".$gx.",".$ywatts2;
+        $gx = $x + $xticker;
         $ywatts2 = $botgraph - $hdiffcnt2[$j]*$scalefactorwatts;
         $polystringwatts2 = $polystringwatts2." ".$gx.",".$ywatts2;
 
+        $gx = $x;
+        $ywatts3 = $botgraph - $hdiffcnt3[$j]*$scalefactorwatts;
+        $polystringwatts3 = $polystringwatts3." ".$gx.",".$ywatts3;
+        $gx = $x + $xticker;
         $ywatts3 = $botgraph - $hdiffcnt3[$j]*$scalefactorwatts;
         $polystringwatts3 = $polystringwatts3." ".$gx.",".$ywatts3;
 
+        $gx = $x;
+        $ywatts4 = $botgraph - (($hdiffcnt1[$j] - ($hdiffcnt2[$j] + $hdiffcnt3[$j]))*$scalefactorwatts);
+        $polystringwatts4 = $polystringwatts4." ".$gx.",".$ywatts4;
+        $gx = $x + $xticker;
         $ywatts4 = $botgraph - (($hdiffcnt1[$j] - ($hdiffcnt2[$j] + $hdiffcnt3[$j]))*$scalefactorwatts);
         $polystringwatts4 = $polystringwatts4." ".$gx.",".$ywatts4;
 
@@ -263,7 +274,7 @@ tr:nth-child(even) {
     $tx = $leftgraph - 10;
     $ty = $botgraph + 18;
     echo '<text x="'.$tx.'" y="'.$ty.'" font-family="sans-serif" font-size="15px">';
-    echo ".";
+    echo $showhour;
     echo '</text>';
 
     echo "\n   <!-- Energy graph lines -->\n   ";

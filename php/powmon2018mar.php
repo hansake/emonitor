@@ -23,7 +23,7 @@ tr:nth-child(even) {
  <body>
  <H2>Energy consumption during March 2018</H2>
   <li>
-    <a href="http:/">Back to main page</a>
+    <a href="index.php">Back to main page</a>
   </li>
 
 <?php

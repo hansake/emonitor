@@ -23,7 +23,7 @@ tr:nth-child(even) {
  <body>
  <H2>Average current per hour during last 24 hours</H2>
   <li>
-    <a href="http:/emonitor.php">Back to main page</a>
+    <a href="emonitor.php">Back to previous page</a>
   </li>
   <br>
 

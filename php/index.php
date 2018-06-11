@@ -119,35 +119,35 @@ tr:nth-child(even) {
 
 <H4>Graphs</H4>
 <li>
-   <a href="http:/powmon2018may.php">Energy consumption during May 2018</a>
+   <a href="powmon2018may.php">Energy consumption during May 2018</a>
 </li>
 <li>
-   <a href="http:/powmon2018apr.php">Energy consumption during April 2018</a>
+   <a href="powmon2018apr.php">Energy consumption during April 2018</a>
 </li>
 <li>
-   <a href="http:/powmon2018mar.php">Energy consumption during March 2018</a>
+   <a href="powmon2018mar.php">Energy consumption during March 2018</a>
 </li>
 <li>
-   <a href="http:/powmon2018feb.php">Energy consumption during February 2018</a>
+   <a href="powmon2018feb.php">Energy consumption during February 2018</a>
 </li>
 <li>
-   <a href="http:/powmon2018jan.php">Energy consumption during January 2018</a>
+   <a href="powmon2018jan.php">Energy consumption during January 2018</a>
 </li>
 <li>
-   <a href="http:/powmon2017.php">Energy consumption during 2017</a>
+   <a href="powmon2017.php">Energy consumption during 2017</a>
 </li>
 <li>
-   <a href="http:/powmonprev30d.php">Energy consumption during last 30 days</a>
+   <a href="powmonprev30d.php">Energy consumption during last 30 days</a>
 </li>
 <li>
-   <a href="http:/powmonprevday.php">Energy consumption during last day</a>
+   <a href="powmonprevday.php">Energy consumption during last day</a>
 </li>
 <li>
-   <a href="http:/powmonprev24h.php">Energy consumption during last 24h</a>
+   <a href="powmonprev24h.php">Energy consumption during last 24h</a>
 </li>
 <H4>Electricity monitor</H4>
 <li>
-   <a href="http:/emonitor.php">Current and power monitor</a>
+   <a href="emonitor.php">Current and power monitor</a>
 </li>
 <H4>Documentation</H4>
 <li>
@@ -155,7 +155,7 @@ tr:nth-child(even) {
 </li>
 <br>
 <li>
-   <a href="http://192.168.1.73/phpliteadmin.php">Database administration</a>
+   <a href="phpliteadmin.php">Database administration</a>
 </li>
 
  </body>

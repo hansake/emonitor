@@ -18,17 +18,17 @@ tr:nth-child(even) {
 }
 </style>
  <head>
-  <title>Energy during June</title>
+  <title>Energy during 2018</title>
  </head>
  <body>
- <H2>Energy consumption during June</H2>
+ <H2>Energy consumption during 2018</H2>
   <li>
     <a href="index.php">Back to main page</a>
   </li>
 
 <?php
 
-    $hcounters = 30;
+    $hcounters = 12;
     $countertxt1 = "Total kWh"; /* Counter 1 */
     $countertxt2 = "Heatpump kWh"; /* Counter 2 */
     $countertxt3 = "Spa kWh"; /* Counter 3 */
@@ -49,7 +49,7 @@ tr:nth-child(even) {
         exit($error);
     }
 
-    $indexdate = date_create('last day of June 2017');
+    $indexdate = date_create('last day of December 2018');
     /*print($indexdate->format('Y-m-d H:i'));*/
 
     $db->busyTimeout(5000);
@@ -97,16 +97,18 @@ tr:nth-child(even) {
                 $totcntr4 = $totcntr1 - ($totcntr2 + $totcntr3);
             }
         }
-        date_sub($indexdate, date_interval_create_from_date_string('24 hours'));
+        /*date_sub($indexdate, date_interval_create_from_date_string('31 days'));*/
+        date_sub($indexdate, date_interval_create_from_date_string('1 month'));
+        /*print($indexdate->format(' Y-m-d H:i'));*/
         $lasttimestamp = $row[0];
     }
 
-    header("refresh: 30;");
+    header("refresh: 100;");
 
     $showdate = date_create();
     date_timestamp_set($showdate, $hdifftime[1]);
-    date_sub($showdate, date_interval_create_from_date_string('24 hours'));
-    echo sprintf("<H4>Energy consumption from %s and throughout the month</H4>\n", $showdate->format('Y-m-d H:i'));
+    /*date_sub($showdate, date_interval_create_from_date_string('1 month'));*/
+    echo sprintf("<H4>Energy consumption from %s and throughout the year</H4>\n", $showdate->format('Y-m-d H:i'));
     $showhour = $showdate->format('Y-m-d H:i');
     $startdate = $showhour;
     date_timestamp_set($showdate, $hdifftime[$hcounters -1]);
@@ -136,8 +138,8 @@ tr:nth-child(even) {
     $maxwatts = max($maxwatts1, $maxwatts2, $maxwatts3);
 
     /*Set parameters for width & height of graph and chart*/
-    $wattspacing = 10000;
-    $graphwidth = $hcounters * 26; /* 30 * 26 */
+    $wattspacing = 200000;
+    $graphwidth = $hcounters * 70; /* 12 * 70 */
     $graphheight = 500;
     $topmargin =  30;
     $botmargin = 40;
@@ -180,7 +182,7 @@ tr:nth-child(even) {
     echo '</text>';
     $tx = $leftgraph + 350;
     echo '<text x="'.$tx.'" y="18" font-family="sans-serif" font-size="15px">';
-    echo 'kWh per day';
+    echo 'kWh per month';
     echo '</text>';
     $tx = $rightgraph - 145;
     echo '<text x="'.$tx.'" y="18" font-family="sans-serif" font-size="15px">';
@@ -232,17 +234,17 @@ tr:nth-child(even) {
     $polystringwatts3 = "";
     $polystringwatts4 = "";
     echo "<!-- Verical lines -->";
+    $month = 1;
     for ($j = 0; $j < count($hdiffcnt1); $j++)
     {
         $x = $leftgraph + $j * $xticker;
         echo "\n   ";
         echo '<line x1="'.$x.'" y1="'.$topgraph.'" x2="'.$x.'" y2="'.$botgraph.'" style="stroke:black;stroke-width:1"/>';
-        date_timestamp_set($showdate, $hdifftime[$j]);
-        $showhour = $showdate->format('d');
         $tx = $x + $xticker - 10;
         $ty = $botgraph + 18;
         echo '<text x="'.$tx.'" y="'.$ty.'" font-family="sans-serif" font-size="15px">';
-        echo $showhour;
+        echo $month;
+        $month = $month + 1;
         echo '</text>';
 
         $gx = $x + $xticker;
@@ -280,5 +282,11 @@ tr:nth-child(even) {
     echo "\n";
 
 ?>
+
+<H4>Monthly graphs</H4>
+<li>
+   <a href="powmon2018jan.php">Energy consumption during January 2018</a>
+</li>
+
  </body>
 </html>

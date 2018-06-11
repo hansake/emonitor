@@ -23,7 +23,7 @@ tr:nth-child(even) {
  <body>
  <H2>Average current per day during last 30 days</H2>
   <li>
-    <a href="http:/emonitor.php">Back to main page</a>
+    <a href="emonitor.php">Back to previous page</a>
   </li>
   <br>
 
