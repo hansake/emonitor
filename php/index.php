@@ -22,6 +22,28 @@ tr:nth-child(even) {
  </head>
  <body>
 
+
+<H2>Energy consumption monitor</H2>
+<li>
+   <a href="powmonprev24h.php">Energy consumption during last 24h</a>
+</li>
+<li>
+   <a href="powmonprevday.php">Energy consumption during last day</a>
+</li>
+<li>
+   <a href="powmonprev30d.php">Energy consumption during last 30 days</a>
+</li>
+<li>
+   <a href="powmon2017-year.php">Energy consumption during 2017</a>
+</li>
+<li>
+   <a href="powmon2018-year.php">Energy consumption during 2018</a>
+</li>
+<H2>Electricity monitor</H2>
+<li>
+   <a href="emonitor.php">Current and power monitor</a>
+</li>
+
 <?php
     $countertxt1 = "Total kWh"; /* Counter 1 */
     $countertxt2 = "Heatpump kWh"; /* Counter 2 */
@@ -86,7 +108,8 @@ tr:nth-child(even) {
     $stampdate = date_create();
     date_timestamp_set($stampdate, $letimestamp);
 
-    echo sprintf("<H2>Energy consumption monitor</H2>\n");
+    echo sprintf("<H4>Energy measurement</H4>\n");
+    echo "Last measurement: ";
     echo ($stampdate->format('Y-m-d H:i'));
     echo "<br>Total kWh measured since: ";
     echo ($startdate->format('Y-m-d H:i'));
@@ -117,42 +140,7 @@ tr:nth-child(even) {
 
 ?>
 
-<H4>Graphs</H4>
-<li>
-   <a href="powmon2018june.php">Energy consumption during June 2018</a> 
-</li> 
-<li>
-   <a href="powmon2018may.php">Energy consumption during May 2018</a>
-</li>
-<li>
-   <a href="powmon2018apr.php">Energy consumption during April 2018</a>
-</li>
-<li>
-   <a href="powmon2018mar.php">Energy consumption during March 2018</a>
-</li>
-<li>
-   <a href="powmon2018feb.php">Energy consumption during February 2018</a>
-</li>
-<li>
-   <a href="powmon2018jan.php">Energy consumption during January 2018</a>
-</li>
-<li>
-   <a href="powmon2017.php">Energy consumption during 2017</a>
-</li>
-<li>
-   <a href="powmonprev30d.php">Energy consumption during last 30 days</a>
-</li>
-<li>
-   <a href="powmonprevday.php">Energy consumption during last day</a>
-</li>
-<li>
-   <a href="powmonprev24h.php">Energy consumption during last 24h</a>
-</li>
-<H4>Electricity monitor</H4>
-<li>
-   <a href="emonitor.php">Current and power monitor</a>
-</li>
-<H4>Documentation</H4>
+<H2>Documentation</H2>
 <li>
    <a href="http://192.168.1.20/MediaWiki/index.php?title=Energy_monitor_on_Raspberry_Pi#Energy_monitor_and_web_interface">Energy monitor on Raspberry Pi</a>
 </li>
