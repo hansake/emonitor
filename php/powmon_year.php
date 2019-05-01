@@ -52,6 +52,8 @@ echo "</li>";
     $startshow = $startdate->format('Y-m-d');
     $indexdate = date_create("last day of December $YEAR");
     $endshow = $indexdate->format('Y-m-d');
+    $nowdate = date_create();
+    $nowshow = $nowdate->format('Y-m-d H:i');
 
     $db->busyTimeout(5000);
 
@@ -111,6 +113,7 @@ echo "</li>";
     header("refresh: 100;");
 
     echo sprintf("<H4>Energy consumption from %s to %s</H4>\n", $startshow, $endshow);
+    echo sprintf("<H5>Report created %s</H5>\n", $nowshow);
 
     $totcntr4 = $totcntr1 - ($totcntr2 + $totcntr3);
     echo "<table>";
