@@ -15,6 +15,7 @@ Presenting measurements:
 
 The presentation of measurements is done using PHP scripts. Graphics is presented using Scalable Vector Graphics (SVG).
 
-No there is also an interface between power monitor and Domoticz using MQTT in the directory: interface-MQTT-Domoticz
+Interface to Domoticz using MQTT:
 
-The Python script 
+No there is also an interface between power monitor and Domoticz using MQTT in the directory: interface-MQTT-Domoticz
+The Python script power_mqtt.py may be called every minute with crontab.
