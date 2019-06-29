@@ -167,7 +167,7 @@ def main():
     GetCurrCounters(database)
 
     while True:
-#        print("Energy: 1 S0: {0} Wh, 2 S0: {1} Wh, 3 S0: {2} Wh".format(pulsecounter1, pulsecounter2, pulsecounter2))
+#        print("Energy: 1 S0: {0} Wh, 2 S0: {1} Wh, 3 S0: {2} Wh".format(pulsecounter1, pulsecounter2, pulsecounter3))
         timenow = int(time.time())
         InsertCounters(database, timenow, pulsecounter1, pulsecounter2, pulsecounter3)
         timenow = int(time.time())
