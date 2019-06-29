@@ -14,3 +14,5 @@ The input from the Janitza  Universal Measuring Device UMG 96S over Modbus is co
 Presenting measurements:
 
 The presentation of measurements is done using PHP scripts. Graphics is presented using Scalable Vector Graphics (SVG).
+
+No there is also an interface between power monitor and Domoticz using MQTT in the directory: 
