@@ -1,4 +1,4 @@
-A MQTT library was installed with: pip install paho-mqtt
+A MQTT library was installed on the energy measuring Raspberry Pi with: pip install paho-mqtt
 
 On the Domoticz side an MQTT client was created :
 MQTT Client Type: "MQTT Client Gateway with LAN interface".
