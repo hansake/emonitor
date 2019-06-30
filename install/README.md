@@ -7,9 +7,9 @@ how to activate init.d scripts etc.
 Install your favourite web server (I am using lighttpd).
 Also install php5-cgi and php5-sqlite.
 
-The Python scripts "emonitor.py" and "pow-mon.py" are placed in: "/usr/local/bin"
+The Python scripts in emonitor and pow-mon; "emonitor.py" and "power-mon.py" are placed in: "/usr/local/bin"
 
-The start scripts for "emonitor" and "pow-mon" are placed in: "/etc/init.d"
+The start scripts in "emonitor" and "pow-mon" are placed in: "/etc/init.d"
 
 The PHP scripts in "php" are placed in: "/var/www/html" (depends on how your web server is configurated):
 
