@@ -7,12 +7,14 @@ how to activate init.d scripts etc.
 Install your favourite web server (I am using lighttpd).
 Also install php5-cgi and php5-sqlite.
 
-The Python scripts in "emonitor" and "pow-mon" are placed in: "/usr/local/bin"
+The Python scripts "emonitor.py" and "pow-mon.py" are placed in: "/usr/local/bin"
 
-The start scripts in "emonitor" and "pow-mon" are placed in: "/etc/init.d"
+The start scripts for "emonitor" and "pow-mon" are placed in: "/etc/init.d"
 
 The PHP scripts in "php" are placed in: "/var/www/html" (depends on how your web server is configurated):
 
 The SQLite databases will be created in: "/var/db"
+
+The Python scripts for MQTT interfaces to Domoticz are placed in: "/usr/local/bin"
 
 A handy tool to inspect the SQLite databases is phpLiteAdmin (https://www.phpliteadmin.org/).
