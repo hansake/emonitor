@@ -17,5 +17,6 @@ The presentation of measurements is done using PHP scripts. Graphics is presente
 
 Interface to Domoticz using MQTT:
 
-Now there is also an interface between power/electricity monitor and Domoticz using MQTT in the directory: interface-MQTT-Domoticz
+Now there is also an interface between the power/electricity monitor and Domoticz using MQTT.
+This interface is in the directory: interface-MQTT-Domoticz
 The Python scripts power_mqtt.py and emon_mqtt.py may be called every minute with crontab.
