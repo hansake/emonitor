@@ -42,6 +42,9 @@ tr:nth-child(even) {
 <li>
    <a href="powmon2019-year.php">Energy consumption during 2019</a>
 </li>
+<li>
+   <a href="powmon2020-year.php">Energy consumption during 2020</a>
+</li>
 <H2>Electricity monitor</H2>
 <li>
    <a href="emonitor.php">Current and power monitor</a>

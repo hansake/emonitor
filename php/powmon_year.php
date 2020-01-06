@@ -159,6 +159,11 @@ echo "</li>";
     {
         $topwatt += $wattspacing;
     }
+    if ($topwatt == 0)
+    {
+        $topwatt = $wattspacing;
+    }
+
     $wattlines = $topwatt / $wattspacing;
     $yspacing = $graphheight / $wattlines;
     $scalefactorwatts = $graphheight / $topwatt;
