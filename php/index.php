@@ -45,6 +45,9 @@ tr:nth-child(even) {
 <li>
    <a href="powmon2020-year.php">Energy consumption during 2020</a>
 </li>
+<li>
+   <a href="powmon2021-year.php">Energy consumption during 2021</a>
+</li>
 <H2>Electricity monitor</H2>
 <li>
    <a href="emonitor.php">Current and power monitor</a>
@@ -146,11 +149,7 @@ tr:nth-child(even) {
 
 ?>
 
-<H2>Documentation</H2>
-<li>
-   <a href="http://192.168.1.20/MediaWiki/index.php?title=Energy_monitor_on_Raspberry_Pi#Energy_monitor_and_web_interface">Energy monitor on Raspberry Pi</a>
-</li>
-<br>
+<H2>Administration</H2>
 <li>
    <a href="phpliteadmin.php">Database administration</a>
 </li>
