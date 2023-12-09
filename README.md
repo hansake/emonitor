@@ -18,5 +18,11 @@ The presentation of measurements is done using PHP scripts. Graphics is presente
 Interface to Domoticz using MQTT:
 
 There is also an interface between the power/electricity monitor and Domoticz using MQTT.
-This interface is in the directory: interface-MQTT-Domoticz
+This interface is in the directory: interface-MQTT-Domoticz.
+The Python scripts power_mqtt.py and emon_mqtt.py may be called every minute with crontab.
+
+Interface to Home Assistant using MQTT:
+
+Now there is also an interface between the power/electricity monitor and Domoticz using MQTT.
+This interface is in the directory: interface-MQTT-ha.
 The Python scripts power_mqtt.py and emon_mqtt.py may be called every minute with crontab.
